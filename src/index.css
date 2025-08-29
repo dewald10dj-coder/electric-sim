@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply antialiased;
+    line-height: 1.5;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  .circuit-grid {
+    background-image: 
+      linear-gradient(to right, #e5e7eb 1px, transparent 1px),
+      linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  .dark .circuit-grid {
+    background-image: 
+      linear-gradient(to right, #374151 1px, transparent 1px),
+      linear-gradient(to bottom, #374151 1px, transparent 1px);
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-800;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400 dark:bg-gray-500;
+  }
+}
+
+/* Konva specific styles */
+.konvajs-content {
+  position: relative !important;
+}
+
+/* Animation for active components */
+@keyframes current-flow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.current-indicator {
+  animation: current-flow 1s ease-in-out infinite;
+}
